@@ -33,9 +33,9 @@ function love.update()
     balle.x = balle.x + balle.speedX
     balle.y = balle.y + balle.speedY
 
-    -- Effet de rebond sur la balle
+    -- Effet de rebond sur les murs pour la balle
     -- Pour la ligne X
-    if balle.x + balle.width >= love.graphics.getWidth() or balle.x <= 0 then
+    if balle.x + balle.width >= love.graphics.getWidth() or balle.x <= raquette.x + raquette.width then
         balle.speedX = -balle.speedX
     end
     -- Pour la ligne Y
