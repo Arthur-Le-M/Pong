@@ -43,8 +43,10 @@ function love.update()
     end
 
     -- Effet de rebond sur la raquette
-    if balle.x <= raquette.x + raquette.width and balle.y <= raquette.y + raquette.height and balle.y >= raquette.y then
+    if balle.x <= raquette.x + raquette.width and balle.x >= raquette.x and balle.y <= raquette.y + raquette.height and balle.y >= raquette.y then
         balle.speedX = -balle.speedX
+        --Bonne pratique = replacer la balle
+        balle.x = raquette.x + raquette.width
     end
 end
 
