@@ -16,9 +16,14 @@ balle.height = 10
 balle.speedX = 3
 balle.speedY = 3
 
+
+imageIcon = love.image.newImageData("icon.png")
+
 function love.load()
     -- Centrage de la balle au début de la partie
     centrageBalle(balle)
+    love.window.setTitle("PONG")
+    love.window.setIcon(imageIcon)
 end
 
 function love.update()
