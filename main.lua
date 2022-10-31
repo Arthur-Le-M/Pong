@@ -5,6 +5,7 @@ raquette.y = 0
 raquette.width = 20
 raquette.height = 80
 raquette.speed = 1
+raquette.score = 0
 
 -- Balle
 balle = {}
@@ -47,6 +48,13 @@ function love.update()
         balle.speedX = -balle.speedX
         --Bonne pratique = replacer la balle
         balle.x = raquette.x + raquette.width
+        -- AJout du score
+        raquette.score = raquette.score + 1
+    end
+
+    -- Cas de GameOver
+    if balle.x < 0 then
+        gameOver()
     end
 end
 
@@ -56,9 +64,20 @@ function love.draw()
 
     --Graphics de la balle
     love.graphics.rectangle("fill", balle.x, balle.y, balle.width, balle.height)
+
+    -- Graphics du score
+    love.graphics.print(raquette.score, love.graphics.getWidth()/2, 10)
 end
 
 function centrageBalle(balle)
     balle.x = love.graphics.getWidth()/2 + balle.width/2
     balle.y = love.graphics.getHeight()/2 + balle.height/2
+end
+
+function gameOver()
+    raquette.score = 0
+    raquette.y = 0
+    balle.speedX = 3
+    balle.speedY = 3
+    love.load()
 end
